@@ -23,7 +23,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 
 # Solution 1
 # Time Complexity O(n)
-# Space Complexity O(m)
+# Space Complexity O(n) -> porque usa hash_map pra guardar os unicos caracteres
 """
 Nesse caso o tempo é O(n), por mais que tenha dois whiles isso nao indica quadratico, 
 o que indicaria era se os ponteiros voltassem os seus índices, nesse caso não pode retroceder 
