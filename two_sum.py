@@ -5,7 +5,7 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
- 
+
 Example 1:
 
 Input: nums = [2,7,11,15], target = 9
@@ -21,6 +21,9 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 """
 
+from typing import List
+
+
 # Solução Time complexity -> 0(n^2) Spance Complexity -> O(1)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -28,8 +31,9 @@ class Solution:
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
-            
-# Solution Time complexity -> O(n) Space Complexity -> O(n)           
+
+
+# Solution Time complexity -> O(n) Space Complexity -> O(n)
 class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         # [10, 20, 30], target = 40
@@ -38,7 +42,7 @@ class Solution2:
             if target - num in num_dict:
                 return [num_dict[target - num], i]
             num_dict[num] = i
-            
+
         # {10: 0}
         # {10: 0, 20: 1}
         # {10: 0, 20: 1, 30: 2}

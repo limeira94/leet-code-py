@@ -14,6 +14,7 @@ Output: false
 """
 
 
+# O(n) time complexity and O(1) space complexity, como não existe criação de estrutura de dados o espaço é constante
 def is_subsequence(s: str, t: str) -> bool:
     if not s:
         return True
