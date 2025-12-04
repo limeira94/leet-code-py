@@ -13,8 +13,6 @@ from typing import List
 Por mais que passe nos teste essa solução é ineficiente, pois temos o count e remove que itera sobre a lista,
 podendo ser um O(n^2)
 """
-
-
 def remove_element2(nums: List[int], val: int) -> int:
     while nums.count(val):
         nums.remove(val)
