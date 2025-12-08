@@ -1,5 +1,6 @@
 """
-Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+Given an array of positive integers nums and a positive integer target, return the minimal 
+length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
 
 Example 1:
 Input: target = 7, nums = [2,3,1,2,4,3]
@@ -32,6 +33,19 @@ def min_subarray_len(target: int, nums: List[int]) -> int:
 
     return min_len if min_len != float("inf") else 0
 
+def min_subarray_len2(target: int, nums: List[int]) -> int:
+    left = 0
+    summ = 0
+    min_length = float('inf')
+    
+    for right in range(len(nums)):
+        summ += nums[right]
+        while summ >= target:
+            min_length = min(min_length, right - left + 1)
+            summ -= nums[left]
+            left += 1
+    return min_length if min_length < float("inf") else 0
+    
 
 def test_1():
     target = 7
