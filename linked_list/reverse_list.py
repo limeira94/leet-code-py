@@ -18,16 +18,11 @@ def reverse_list(head):
     prev = None
     current = head
     
-    while current is not None:
-        next = current.next
+    while current:
+        
+        nxt = current.next
         current.next = prev
         prev = current
-        current = next
-
-    return prev
-
-
-# None  A <-- B <-- C <-- D  None        
-#                  prev  cur  
-
-reverse_list(d)
+        current = nxt
+# None <- A <- B <- C <- D
+        

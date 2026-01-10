@@ -1,8 +1,11 @@
-def breadth_first(graph, source):
-    queue = [source]
+from collections import deque
 
-    while len(queue) > 0:
-        current = queue.pop(0)
+
+def breadth_first(graph, source):
+    queue = deque(source)
+
+    while queue:
+        current = queue.popleft()
         print(current)
         for neighbor in graph[current]:
             queue.append(neighbor)
