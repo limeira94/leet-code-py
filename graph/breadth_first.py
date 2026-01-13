@@ -4,7 +4,7 @@ from collections import deque
 def breadth_first(graph, source):
     queue = deque(source)
 
-    while queue:
+    while len(queue) > 0:
         current = queue.popleft()
         print(current)
         for neighbor in graph[current]:

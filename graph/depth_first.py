@@ -1,6 +1,6 @@
 def depth_first(graph, source):
     stack = [source]
-    while stack:
+    while len(stack) > 0:
         current = stack.pop()
         print(current)
         for neighbor in graph[current]:
