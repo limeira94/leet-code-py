@@ -1,34 +1,36 @@
-def island_count(grid):
+def minimum_island(grid):
     visited = set()
-    count = 0
+    min_size = float("inf")
     for r in range(len(grid)):
         for c in range(len(grid[0])):
-            if explore(grid, r, c, visited) is True:
-                count += 1
+            size = explore_size(grid, r, c, visited)
+            if size > 0 and size < min_size:
+                min_size = size
 
-    return count
+    return min_size
 
 
-def explore(grid, r, c, visited):
+def explore_size(grid, r, c, visited):
     row_inbounds = 0 <= r < len(grid)
     col_inbounds = 0 <= c < len(grid[0])
     if not row_inbounds or not col_inbounds:
-        return False
+        return 0
 
     if grid[r][c] == "W":
-        return False
+        return 0
 
     pos = (r, c)
     if pos in visited:
-        return False
+        return 0
     visited.add(pos)
 
-    explore(grid, r - 1, c, visited)
-    explore(grid, r + 1, c, visited)
-    explore(grid, r, c - 1, visited)
-    explore(grid, r, c + 1, visited)
+    size = 1
+    size += explore_size(grid, r - 1, c, visited)
+    size += explore_size(grid, r + 1, c, visited)
+    size += explore_size(grid, r, c - 1, visited)
+    size += explore_size(grid, r, c + 1, visited)
 
-    return True
+    return size
 
 
 grid = [
