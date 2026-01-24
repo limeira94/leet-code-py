@@ -15,19 +15,30 @@ class ListNode:
         self.next = None
 
 
-def has_cycle(head: Optional[ListNode]) -> bool:
-    if head is None:
-        return False
+# def has_cycle(head: Optional[ListNode]) -> bool:
+#     if head is None:
+#         return False
 
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow == fast:
+#     slow = fast = head
+#     while fast and fast.next:
+#         slow = slow.next
+#         fast = fast.next.next
+#         if slow == fast:
+#             return True
+#     return False
+
+# Time O(n) and Space O(n)
+def has_cycle(head: Optional[ListNode]):
+    seen = set()
+    current = head
+    
+    while current:
+        if current in seen:
             return True
+        seen.add(current)
+        current = current.next
     return False
-
-
+        
 def test_1():
     node1 = ListNode(3)
     node2 = ListNode(2)

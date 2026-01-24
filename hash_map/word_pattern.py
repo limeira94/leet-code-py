@@ -46,12 +46,31 @@ def word_pattern2(pattern: str, s: str) -> bool:
     return True
 
 
-def word_pattern(pattern: str, s: str) -> bool:
+def word_pattern3(pattern: str, s: str) -> bool:
     words = s.split()
     if len(pattern) != len(words):
         return False
 
     return len(set(zip(pattern, words))) == len(set(pattern)) == len(set(words))
+
+
+def word_pattern(pattern: str, s: str) -> bool:
+    words = s.split()
+    if len(pattern) != len(words):
+        return False
+
+    d = {}
+    seen = set()
+    for i, char in enumerate(pattern):
+        if char not in d:
+            if words[i] in seen:
+                return False
+            d[char] = words[i]
+            seen.add(words[i])
+        else:
+            if d[char] != words[i]:
+                return False
+    return True
 
 
 def test_1():
