@@ -5,18 +5,35 @@
 #         self.left = left
 #         self.right = right
 
-class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if root is None:
-            return None
-        values = []
-        stack = [root]
-        while stack:
-            current = stack.pop()
-            values.append(current.val)
+from collections import deque
 
-            if current.right:
-                stack.append(current.right)
+# Time: 0(n) Space O(h) -> height tree == O(n)
+def maxDepth(root):
+    if not root:
+        return 0
+    
+    left = maxDepth(root.left)
+    right = maxDepth(root.right)
+    
+    return 1 + max(left, right)
+
+def maxDepth2(root):
+    if not root:
+        return 0
+    queue = deque([root])
+    level = 0
+    
+    while level:
+        level_size = len(queue)
+        
+        for i in range(level_size):
+            current = queue.popleft()
+            
             if current.left:
-                stack.append(current.left)
-        return values
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+        level += 1
+        
+    return level  
+    
